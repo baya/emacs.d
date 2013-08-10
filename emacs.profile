@@ -142,3 +142,8 @@
 ;; (setq org-todo-keywords
 ;;      '((sequence "TODO" "DOING" "HANGUP" "|" "DONE" "CANCEL")))
 
+;; slim
+(require 'slim-mode)
+
+;; revert buffer
+(global-set-key [(control c) r] 'revert-buffer)
