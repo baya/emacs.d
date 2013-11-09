@@ -133,7 +133,7 @@
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; font
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 ;; haml
 (require 'haml-mode)
@@ -147,3 +147,13 @@
 
 ;; revert buffer
 (global-set-key [(control c) r] 'revert-buffer)
+
+;; default directory
+(setq default-directory "~/")
+(cd "~/")
+
+;; han
+(set-fontset-font
+    (frame-parameter nil 'font)
+    'han
+    (font-spec :family "Hiragino Sans GB" ))
