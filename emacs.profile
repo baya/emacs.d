@@ -20,7 +20,7 @@
 (require 'rinari)
 (setq rinari-tags-file-name "TAGS")
 
-;;
+;; 括号匹配，但是不跳转
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
@@ -150,10 +150,15 @@
 
 ;; default directory
 (setq default-directory "~/")
-(cd "~/")
 
 ;; han
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
     (font-spec :family "Hiragino Sans GB" ))
+
+;; 启动去掉欢迎页面
+(setq inhibit-startup-message t)
+
+;; 反显选中区域
+(transient-mark-mode t)
