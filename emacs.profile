@@ -133,7 +133,7 @@
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; font
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 110)
 
 ;; haml
 (require 'haml-mode)
@@ -152,7 +152,7 @@
 (setq default-directory "~/")
 
 ;; han
-(set-frame-font "Menlo")
+;; (set-frame-font "Menlo")
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
