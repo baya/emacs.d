@@ -152,6 +152,7 @@
 (setq default-directory "~/")
 
 ;; han
+(set-frame-font "Menlo-15")
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
