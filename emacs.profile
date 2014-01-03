@@ -163,3 +163,23 @@
 
 ;; 反显选中区域
 (transient-mark-mode t)
+
+;; js code folding
+;; M-x hs-hide-block
+(add-hook 'js-mode-hook
+	  (lambda ()
+	    ;; Scan the file for nested code blocks
+	    (imenu-add-menubar-index)
+	    ;; Activate the folding mode
+	    (hs-minor-mode t)))
+
+;; web-mode
+;; http://web-mode.org/
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
