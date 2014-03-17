@@ -183,3 +183,15 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; cl-lib
+(add-to-list 'load-path "~/.emacs.d/cl-lib/")
+(require 'cl-lib)
+
+;; powerline
+;;(add-to-list 'load-path "~/.emacs.d/powerline")
+;;(require 'powerline)
+;;(powerline-default-theme)
+
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
