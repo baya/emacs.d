@@ -2,12 +2,12 @@
 ;; (setq ruby-insert-encoding-magic-comment nil)
 
 ;; disable back up file
-(setq make-backup-files nil) 
+(setq make-backup-files nil)
 
 ;; disable tool-bar-mode
 (setq tool-bar-mode nil)
 
-;; Interactively Do Things (highly recommended, but not strictly requiredejxs) 
+;; Interactively Do Things (highly recommended, but not strictly requiredejxs)
 (require 'ido)
 (ido-mode t)
 
@@ -195,3 +195,13 @@
 
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; zencoding
+(add-to-list 'load-path "~/.emacs.d/emmet-mode")
+(require 'emmet-mode)
+
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
+(global-set-key (kbd "C-x j") 'emmet-expand-line)
