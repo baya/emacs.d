@@ -29,6 +29,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+(setq auto-complete-mode t)
 
 ;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
@@ -223,3 +224,6 @@
 (add-to-list 'load-path "~/.emacs.d/ess/lisp/")
 (load "ess-site")
 
+;; Goland
+(add-to-list 'load-path "~/.emacs.d/go/" t)
+(require 'go-mode-load)
