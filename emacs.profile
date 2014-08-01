@@ -29,7 +29,14 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
-(setq auto-complete-mode t)
+
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(defun auto-complete-mode-maybe ()
+  "No maybe for you. Only AC!"
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
 
 ;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
