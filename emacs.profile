@@ -30,6 +30,14 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(defun auto-complete-mode-maybe ()
+  "No maybe for you. Only AC!"
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
+
 ;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (require 'yasnippet)
@@ -79,8 +87,6 @@
 ;; (add-to-list 'load-path (concat rsense-home "/etc"))
 ;; (require 'rsense)
 ;; (put 'set-goal-column 'disabled nil)
-;; (put 'upcase-region 'disabled nil)
-;; (put 'downcase-region 'disabled nil)
 ;; (put 'scroll-left 'disabled nil)
 
 ;; config
@@ -200,8 +206,31 @@
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (require 'emmet-mode)
 
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+;; (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'html-mode-hook 'emmet-mode)
-;;(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+;; (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 (global-set-key (kbd "C-x j") 'emmet-expand-line)
+(global-unset-key "\C-j")
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-j") 'newline-and-indent)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+
+;; ag
+;; ag-files
+;; ag-regexp
+;; ag-project
+;; ag-project-files
+;; ag-project-regexp
+(add-to-list 'load-path "~/.emacs.d/ag.el")
+(require 'ag)
+
+;; ESS
+(add-to-list 'load-path "~/.emacs.d/ess/lisp/")
+(load "ess-site")
+
+;; Goland
+(add-to-list 'load-path "~/.emacs.d/go/" t)
+(require 'go-mode-load)
