@@ -30,9 +30,6 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
 (defun auto-complete-mode-maybe ()
   "No maybe for you. Only AC!"
   (unless (minibufferp (current-buffer))
@@ -234,3 +231,8 @@
 ;; Goland
 (add-to-list 'load-path "~/.emacs.d/go/" t)
 (require 'go-mode-load)
+
+;; Enhanced-Ruby-Mode
+(add-to-list 'load-path "~/.emacs.d/Enhanced-Ruby-Mode");
+(setq enh-ruby-program "~/.rbenv/shims/ruby");
+(require 'ruby-mode)
