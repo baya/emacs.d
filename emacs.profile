@@ -236,3 +236,15 @@
 (add-to-list 'load-path "~/.emacs.d/Enhanced-Ruby-Mode");
 (setq enh-ruby-program "~/.rbenv/shims/ruby");
 (require 'ruby-mode)
+
+;; Prompt Before Closing Emacs
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+(global-set-key (kbd "C-x C-c") 'ask-before-closing)
