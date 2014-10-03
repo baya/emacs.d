@@ -244,7 +244,7 @@
 ;; erlang/otp
 (setq load-path (cons  "/usr/local/Cellar/erlang/17.1_1/lib/erlang/lib/tools-2.6.15/emacs"
       load-path))
-      (setq erlang-root-dir "/usr/local/Cellar/erlang/17.1_1/lib/erlang/")
+      (setq erlang-root-dir "/usr/local/Cellar/erlang/17.1_1/lib/erlang")
       (setq exec-path (cons "/usr/local/Cellar/erlang/17.1_1/lib/erlang/bin" exec-path))
       (require 'erlang-start)
 
