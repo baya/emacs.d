@@ -30,9 +30,6 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
 (defun auto-complete-mode-maybe ()
   "No maybe for you. Only AC!"
   (unless (minibufferp (current-buffer))
@@ -235,6 +232,23 @@
 (add-to-list 'load-path "~/.emacs.d/go/" t)
 (require 'go-mode-load)
 
+;; Enhanced-Ruby-Mode
+(add-to-list 'load-path "~/.emacs.d/Enhanced-Ruby-Mode");
+(setq enh-ruby-program "~/.rbenv/shims/ruby");
+(require 'ruby-mode)
+
+;; Prompt Before Closing Emacs
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+(global-set-key (kbd "C-x C-c") 'ask-before-closing)
+
 ;; scheme
 ;; M-x paredit-mode
 (autoload 'paredit-mode "paredit"
@@ -247,4 +261,3 @@
       (setq erlang-root-dir "/usr/local/Cellar/erlang/17.1_1/lib/erlang")
       (setq exec-path (cons "/usr/local/Cellar/erlang/17.1_1/lib/erlang/bin" exec-path))
       (require 'erlang-start)
-
