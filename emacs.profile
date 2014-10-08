@@ -261,3 +261,11 @@
       (setq erlang-root-dir "/usr/local/Cellar/erlang/17.1_1/lib/erlang/")
       (setq exec-path (cons "/usr/local/Cellar/erlang/17.1_1/lib/erlang/bin" exec-path))
       (require 'erlang-start)
+
+;; erlang distel
+
+;; (add-to-list 'load-path "~/.emacs.d/distel/elisp")
+;; (require 'distel)
+;; (distel-setup)
+
+(set-language-environment "UTF-8")
