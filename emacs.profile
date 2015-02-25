@@ -44,12 +44,23 @@
 ;(ac-set-trigger-key "TAB")
 ;(ac-set-trigger-key "<tab>")
 
+;; auto-complete-clang
+(require 'auto-complete-clang)
+
 
 ;; ruby-mode
+(add-to-list 'load-path "~/.emacs.d/ruby-mode")
+(autoload 'ruby-mode "ruby-mode.el")
 (setq auto-mode-alist
       (cons
        '("\\.rake" . ruby-mode) auto-mode-alist))
 
+(setq auto-mode-alist
+      (cons
+       '("\\.rb" . ruby-mode) auto-mode-alist))
+       
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
 ;; markdown-mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
@@ -192,6 +203,8 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
+
 ;; cl-lib
 (add-to-list 'load-path "~/.emacs.d/cl-lib/")
 (require 'cl-lib)
@@ -202,7 +215,7 @@
 ;;(powerline-default-theme)
 
 ;; delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; zencoding
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
@@ -289,3 +302,15 @@
 ;; (distel-setup)
 
 (set-language-environment "UTF-8")
+
+;; auto auto-complete-mode
+
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . auto-complete-mode))
+
+;; scss-mode
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(setq scss-compile-at-save nil)
