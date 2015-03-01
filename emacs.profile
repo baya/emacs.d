@@ -24,27 +24,43 @@
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
+;; yasnippet
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(yas/global-mode 1)
+
+
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-(defun auto-complete-mode-maybe ()
-  "No maybe for you. Only AC!"
-  (unless (minibufferp (current-buffer))
-    (auto-complete-mode 1)))
+; (defun auto-complete-mode-maybe ()
+;   "No maybe for you. Only AC!"
+;   (unless (minibufferp (current-buffer))
+;     (auto-complete-mode 1)))
 
-;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/yasnippet")
-(require 'yasnippet)
-(yas/global-mode 1)
+;(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "<tab>")
+
+;; auto-complete-clang
+(require 'auto-complete-clang)
+
 
 ;; ruby-mode
+(add-to-list 'load-path "~/.emacs.d/ruby-mode")
+(autoload 'ruby-mode "ruby-mode.el")
 (setq auto-mode-alist
       (cons
        '("\\.rake" . ruby-mode) auto-mode-alist))
 
+(setq auto-mode-alist
+      (cons
+       '("\\.rb" . ruby-mode) auto-mode-alist))
+       
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
 ;; markdown-mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
@@ -187,6 +203,8 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
+
 ;; cl-lib
 (add-to-list 'load-path "~/.emacs.d/cl-lib/")
 (require 'cl-lib)
@@ -262,10 +280,37 @@
       (setq exec-path (cons "/usr/local/Cellar/erlang/17.1_1/lib/erlang/bin" exec-path))
       (require 'erlang-start)
 
-;; erlang distel
+;; cc-mode
+;; (require 'cc-mode)
 
+;; cedet
+;; (global-ede-mode 1)
+;; (require 'semantic/sb)
+;; (semantic-mode 1)
+
+; (setq c-default-style "linux")
+
+;; c style
+(setq c-default-style "linux"
+          c-basic-offset 4)
+
+(c-set-offset 'substatement-open 0)
+
+;; erlang distel
 ;; (add-to-list 'load-path "~/.emacs.d/distel/elisp")
 ;; (require 'distel)
 ;; (distel-setup)
 
 (set-language-environment "UTF-8")
+
+;; auto auto-complete-mode
+
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . auto-complete-mode))
+
+;; scss-mode
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(setq scss-compile-at-save nil)
