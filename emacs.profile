@@ -197,7 +197,7 @@
 ;;(powerline-default-theme)
 
 ;; delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; zencoding
 (add-to-list 'load-path "~/.emacs.d/emmet-mode")
