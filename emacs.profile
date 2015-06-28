@@ -1,6 +1,9 @@
 ;; prevent adding coding information for ruby file
 ;; (setq ruby-insert-encoding-magic-comment nil)
 
+;; UTF-8 as default encoding
+(set-language-environment "UTF-8")
+
 ;; disable back up file
 (setq make-backup-files nil)
 
@@ -32,20 +35,25 @@
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
+(require 'auto-complete)
+(global-auto-complete-mode t)
+;; (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+;; (ac-config-default)
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . auto-complete-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . auto-complete-mode))
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
 
-; (defun auto-complete-mode-maybe ()
-;   "No maybe for you. Only AC!"
-;   (unless (minibufferp (current-buffer))
-;     (auto-complete-mode 1)))
 
-;(ac-set-trigger-key "TAB")
-;(ac-set-trigger-key "<tab>")
+;; (defun auto-complete-mode-maybe ()
+;;   "No maybe for you. Only AC!"
+;;   (unless (minibufferp (current-buffer))
+;;     (auto-complete-mode 1)))
 
 ;; auto-complete-clang
-(require 'auto-complete-clang)
+;;(require 'auto-complete-clang)
 
 
 ;; ruby-mode
@@ -59,8 +67,6 @@
       (cons
        '("\\.rb" . ruby-mode) auto-mode-alist))
        
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
 ;; markdown-mode
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
@@ -281,7 +287,9 @@
       (require 'erlang-start)
 
 ;; cc-mode
-;; (require 'cc-mode)
+(require 'cc-mode)
+
+(add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode))
 
 ;; cedet
 ;; (global-ede-mode 1)
@@ -303,14 +311,14 @@
 
 (set-language-environment "UTF-8")
 
-;; auto auto-complete-mode
-
-(add-to-list 'auto-mode-alist '("\\.erl\\'" . auto-complete-mode))
-(add-to-list 'auto-mode-alist '("\\.c\\'" . auto-complete-mode))
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . auto-complete-mode))
 
 ;; scss-mode
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (setq scss-compile-at-save nil)
+
+
+;; company-mode
+;; (add-to-list 'load-path "~/.emacs.d/company-mode-company-mode-2306c9c")
+;; (autoload 'company-mode "company" nil t)
