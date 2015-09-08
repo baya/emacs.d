@@ -1,5 +1,5 @@
 ;; prevent adding coding information for ruby file
-;; (setq ruby-insert-encoding-magic-comment nil)
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; UTF-8 as default encoding
 (set-language-environment "UTF-8")
@@ -299,8 +299,8 @@
 ; (setq c-default-style "linux")
 
 ;; c style
-(setq c-default-style "linux"
-          c-basic-offset 4)
+;; (setq c-default-style "linux"
+;;           c-basic-offset 2)
 
 (c-set-offset 'substatement-open 0)
 
@@ -322,3 +322,9 @@
 ;; company-mode
 ;; (add-to-list 'load-path "~/.emacs.d/company-mode-company-mode-2306c9c")
 ;; (autoload 'company-mode "company" nil t)
+
+;; crystal-mode
+(add-to-list 'load-path "~/.emacs.d")
+(autoload 'crystal-mode "crystal-mode" "Major mode for crystal files" t)
+(add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
+(add-to-list 'interpreter-mode-alist '("crystal" . crystal-mode)
